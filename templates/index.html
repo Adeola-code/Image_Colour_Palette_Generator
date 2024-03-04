@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Analysis</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p.error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Color Analysis</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".png, .jpg, .jpeg, .gif" required>
+        <button type="submit">Analyze</button>
+    </form>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Analysis Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;  /* Default text color */
+        }
+
+        li.dark-background {
+            color: #fff;  /* Text color for dark backgrounds */
+        }
+
+        li.light-background {
+            color: #000;  /* Text color for light backgrounds */
+        }
+    </style>
+</head>
+<body>
+    <h1>Top 10 Colors</h1>
+    <ul>
+        {% for color, count in top_colors %}
+            <li style="background-color: rgb({{ color[0] }}, {{ color[1] }}, {{ color[2] }})"
+                {% if 0.299*color[0] + 0.587*color[1] + 0.114*color[2] < 128 %}class="dark-background"{% else %}class="light-background"{% endif %}>
+                {{ color }} - {{ count }} occurrences
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
